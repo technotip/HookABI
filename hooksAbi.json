@@ -1,0 +1,111 @@
+{
+  "9C83ABDEC707117F29E8E8D0BD16597D33147560939749B177AD102105522708": {
+    "transactionTypes": {
+      "Invoke": {
+        "name": "Voucher Claim",
+        "description": "To claim a voucher from Voucher Contract.",
+        "Blob": [
+          {
+            "name": "Signature",
+            "type": "uint64_t",
+            "description": "Signature of the voucher."
+          },
+          {
+            "name": "privateKey",
+            "type": "33",
+            "description": "Private key of the voucher."
+          },
+          {
+            "name": "Account",
+            "type": "uint20_t",
+            "description": "Account to which the voucher is claimed."
+          }
+        ]
+      },
+      "effects": "Claims a voucher from the Voucher Contract."
+    }
+  },
+  "78753F1802C38D96286ACB9DB2E9CAA2A394ECBEBFA5D82537E61B38478DB146": {
+    "transactionTypes": {
+      "Payment": {
+        "name": "Create Voucher",
+        "description": "Create a voucher for a specific amount.",
+        "HookParameters": [
+          {
+            "name": "voucher Create (VC)",
+            "type": "33",
+            "description": "Public key of the voucher."
+          }
+        ]
+      }
+    },
+    "effects": "Creates a voucher and stores the public key in the contract."
+  },
+
+  "7E99F7358CC71D8072E53784892CA75A3E43A0598D4A18CBE88982E4C67BFAD0": {
+    "transactionTypes": {
+      "SetHook": {
+        "name": "Create Treasury - Balance Locking",
+        "description": "Create a treasury with a limit amount, destination account, and ledger interval.",
+        "HookParameters": [
+          {
+            "name": "Limit Amount (A)",
+            "type": "uint8_t",
+            "description": "Limit amount of the treasury account."
+          },
+          {
+            "name": "Destination Account (D)",
+            "type": "uint20_t",
+            "description": "Destination account of the treasury account."
+          },
+          {
+            "name": "Ledger Interval (L)",
+            "type": "uint4_t",
+            "description": "Ledger interval before the limit amount is withdrawal."
+          }
+        ],
+        "effects": "Install treasury hook with limit amount, destination account, and ledger interval."
+      },
+      "Invoke": {
+        "name": "Withdraw From Treasury Account",
+        "description": "Withdraw from the treasury account.",
+        "HookParameters": [
+          {
+            "name": "Withdraw Amount (W)",
+            "type": "uint8_t",
+            "description": "Withdraw amount from the treasury account."
+          }
+        ],
+        "effects": "Withdraw from the treasury account to the destination account(Set In HookParameter)."
+      }
+    }
+  },
+  "B55839E8CABBDE2501249C0F7B4BFD58FC25838AC79D6822594076804EABBE60": {
+    "transactionTypes": {
+      "SetHook": {
+        "name": "Create Treasury - for ClaimReward",
+        "description": "Create a treasury with the ability to claim rewards.",
+        "HookParameters": [
+          {
+            "name": "Destination Account (D)",
+            "type": "uint20_t",
+            "description": "Destination account of the treasury account."
+          }
+        ],
+        "effects": "Install treasury hook and enable rewards claiming to destination account(HookParameter)."
+      },
+      "Invoke": {
+        "name": "Claim Reward (C)",
+        "description": "Claim reward from the treasury account.",
+        "HookParameters": [
+          {
+            "name": "Claim Reward (C)",
+            "type": "1",
+            "description": "Claim reward from the treasury account."
+          }
+        ],
+        "effects": "Claim reward from the treasury account and forward to the destination account(Set In HookParameter)."
+      }
+    }
+  }
+}

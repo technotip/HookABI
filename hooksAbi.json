@@ -17,7 +17,7 @@
           },
           {
             "name": "Account",
-            "type": "uint20_t",
+            "type": "account",
             "description": "Account to which the voucher is claimed."
           }
         ]
@@ -32,6 +32,7 @@
         "description": "Create a voucher for a specific amount.",
         "HookParameters": [
           {
+            "HookParameterName": "5643",
             "name": "voucher Create (VC)",
             "type": "33",
             "description": "Public key of the voucher."
@@ -41,7 +42,6 @@
     },
     "effects": "Creates a voucher and stores the public key in the contract."
   },
-
   "7E99F7358CC71D8072E53784892CA75A3E43A0598D4A18CBE88982E4C67BFAD0": {
     "transactionTypes": {
       "SetHook": {
@@ -49,18 +49,21 @@
         "description": "Create a treasury with a limit amount, destination account, and ledger interval.",
         "HookParameters": [
           {
+            "HookParameterName": "41",
             "name": "Limit Amount (A)",
-            "type": "uint8_t",
+            "type": "amount",
             "description": "Limit amount of the treasury account."
           },
           {
+            "HookParameterName": "44",
             "name": "Destination Account (D)",
-            "type": "uint20_t",
+            "type": "account",
             "description": "Destination account of the treasury account."
           },
           {
+            "HookParameterName": "4C",
             "name": "Ledger Interval (L)",
-            "type": "uint4_t",
+            "type": "ledger",
             "description": "Ledger interval before the limit amount is withdrawal."
           }
         ],
@@ -71,8 +74,9 @@
         "description": "Withdraw from the treasury account.",
         "HookParameters": [
           {
+            "HookParameterName": "57",
             "name": "Withdraw Amount (W)",
-            "type": "uint8_t",
+            "type": "amount",
             "description": "Withdraw amount from the treasury account."
           }
         ],
@@ -87,8 +91,9 @@
         "description": "Create a treasury with the ability to claim rewards.",
         "HookParameters": [
           {
+            "HookParameterName": "44",
             "name": "Destination Account (D)",
-            "type": "uint20_t",
+            "type": "account",
             "description": "Destination account of the treasury account."
           }
         ],
@@ -99,6 +104,7 @@
         "description": "Claim reward from the treasury account.",
         "HookParameters": [
           {
+            "HookParameterName": "43",
             "name": "Claim Reward (C)",
             "type": "1",
             "description": "Claim reward from the treasury account."
